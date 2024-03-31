@@ -8,6 +8,17 @@ pipeline {
   disableConcurrentBuilds abortPrevious: true
 }
     stages {
+
+
+
+
+
+
+
+
+
+
+
         
         // stage('SonarQube Analysis') {
         //     steps {
@@ -27,5 +38,5 @@ pipeline {
     //               }
     //             }
     //           }  
-    // }
+    }
 }
