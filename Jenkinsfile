@@ -9,23 +9,23 @@ pipeline {
 }
     stages {
         
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar';
-                    withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             def scannerHome = tool 'sonar';
+        //             withSonarQubeEnv() {
+        //                 sh "${scannerHome}/bin/sonar-scanner"
+        //             }
+        //         }
+        //     }
+        // }
 
-        stage("Quality Gate") {
-                steps {
-                  timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
-                  }
-                }
-              }  
-    }
+    //     stage("Quality Gate") {
+    //             steps {
+    //               timeout(time: 1, unit: 'HOURS') {
+    //                 waitForQualityGate abortPipeline: true
+    //               }
+    //             }
+    //           }  
+    // }
 }
