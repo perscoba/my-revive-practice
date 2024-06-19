@@ -42,16 +42,12 @@ pipeline {
                 sh "mkdir my-folder"
                 sh "ls -l"
             }
-            
+          steps {
+                sh " ls -l "
+            }
         }
 
 
-
-      stage('build and push') {
-            steps {
-                sh " ls -l "
-            }
-        }  
 
 
 
