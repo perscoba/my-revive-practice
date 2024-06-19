@@ -20,8 +20,9 @@ pipeline {
            sh " ls -l"
            dir('./new-dr') {
                sh "touch file.sh "
+               sh " ls -l"
            }
-           sh " ls -l"
+           
            }
      }
 
