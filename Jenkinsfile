@@ -30,15 +30,15 @@ pipeline {
            }
            
 
-      stage('Example Deploy') {
-            when {
-                branch 'main'
-                environment name: 'DEPLOY_TO', value: 'production'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
+      // stage('Example Deploy') {
+      //       when {
+      //           branch 'main'
+      //           environment name: 'DEPLOY_TO', value: 'production'
+      //       }
+      //       steps {
+      //           echo 'Deploying'
+      //       }
+      //   }
 
 
            }
