@@ -3,6 +3,9 @@
 
 pipeline {
     agent any
+    triggers {
+         githubPush()
+    }
    options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '5', artifactNumToKeepStr: '5', daysToKeepStr: '5', numToKeepStr: '5')
   disableConcurrentBuilds abortPrevious: true
