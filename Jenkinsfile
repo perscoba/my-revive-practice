@@ -9,6 +9,12 @@ pipeline {
 }
     stages {
 
+      stage('build and push') {
+            steps {
+                sh " ls "
+            }
+        }
+
 
 
 
