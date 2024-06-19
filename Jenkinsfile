@@ -21,6 +21,12 @@ pipeline {
            dir('./new-dr') {
                sh "touch file.sh "
                sh " ls -l"
+
+               script {
+            if (fileExists('./file.sh')) {
+                echo "file.sh found!"
+            }
+        }
            }
            
            }
