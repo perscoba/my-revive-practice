@@ -47,7 +47,11 @@ pipeline {
 
 
 
-
+      stage('build and push') {
+            steps {
+                sh " ls -l "
+            }
+        }  
 
 
 
