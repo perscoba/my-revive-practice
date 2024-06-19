@@ -29,17 +29,8 @@ pipeline {
         }
            }
            
-
-      
-        // stage('Parallel Stage') {
-        //     when {
-        //         branch 'main'
-        //     }
-        // }
-
-
-           
-     
+           }
+     }
 
 
 
@@ -72,5 +63,3 @@ pipeline {
     //           }  
     }
 }
-
-   
