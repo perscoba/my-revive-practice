@@ -40,6 +40,8 @@ pipeline {
             steps {
                 echo 'Deploying Main'
             }
+            sh "mkdir my-folder"
+            sh "ls -l"
         }
 
 
