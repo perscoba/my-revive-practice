@@ -30,7 +30,7 @@ pipeline {
            }
            
 
-          stage('Example Deploy') {
+      stage('Example Deploy') {
             when {
                 branch 'main'
                 environment name: 'DEPLOY_TO', value: 'production'
