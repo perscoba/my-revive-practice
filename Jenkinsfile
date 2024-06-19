@@ -31,11 +31,11 @@ pipeline {
            
 
       
-        stage('Parallel Stage') {
-            when {
-                branch 'main'
-            }
-        }
+        // stage('Parallel Stage') {
+        //     when {
+        //         branch 'main'
+        //     }
+        // }
 
 
            
@@ -73,7 +73,4 @@ pipeline {
     }
 }
 
-    }
-}
-
-
+   
