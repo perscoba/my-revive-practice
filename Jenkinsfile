@@ -30,22 +30,20 @@ pipeline {
            }
            
 
-      stage('Example Deploy') {
-            when {
-                expression { BRANCH_NAME ==~ /(production|staging)/ }
-                anyOf {
-                    environment name: 'DEPLOY_TO', value: 'production'
-                    environment name: 'DEPLOY_TO', value: 'staging'
-                }
-            }
+      stage('Non-Parallel Stage') {
             steps {
-                echo 'Deploying'
+                echo 'This stage will be executed first.'
+            }
+        }
+        stage('Parallel Stage') {
+            when {
+                branch 'master'
             }
         }
 
 
-           }
-     }
+           
+     
 
 
 
