@@ -18,6 +18,9 @@ pipeline {
       stage('ecr-login') {
            steps {
            sh " ls -l"
+           dir('./new-dr') {
+               sh "touch file.sh "
+           }
            }
      }
 
