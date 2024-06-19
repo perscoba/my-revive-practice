@@ -17,7 +17,7 @@ pipeline {
 
       stage('ecr-login') {
            steps {
-           sh " ls "
+           sh " ls -l"
            }
      }
 
