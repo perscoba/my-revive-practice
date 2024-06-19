@@ -33,14 +33,12 @@ pipeline {
      }
 
 
-    // stage('Non-Parallel Stage') {
-    //         steps {
-    //             echo 'This stage will be executed first.'
-    //         }
-    //     }
-    stage('Parallel Stage') {
+    stage('Example Deploy') {
             when {
-                branch 'main'
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
 
