@@ -9,6 +9,13 @@ pipeline {
 }
     stages {
 
+        stage('ecr-login') {
+  steps {
+    // One or more steps need to be included within the steps block.
+  }
+}
+
+
 
 
 
@@ -20,16 +27,16 @@ pipeline {
 
 
         
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar';
-                    withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             def scannerHome = tool 'sonar';
+        //             withSonarQubeEnv() {
+        //                 sh "${scannerHome}/bin/sonar-scanner"
+        //             }
+        //         }
+        //     }
+        // }
 
     //     stage("Quality Gate") {
     //             steps {
