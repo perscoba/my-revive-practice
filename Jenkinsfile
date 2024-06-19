@@ -35,7 +35,7 @@ pipeline {
 
     stage('Example Deploy') {
             when {
-                branch 'main'
+                branch 'master'
             }
             
           steps {
