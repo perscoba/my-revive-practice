@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Parallel Stage') {
             when {
-                branch 'master'
+                branch 'main'
             }
         }
 
