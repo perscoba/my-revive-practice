@@ -33,15 +33,15 @@ pipeline {
      }
 
 
-    stage('Example Deploy') {
-            when {
-                branch 'master'
-            }
+    // stage('Example Deploy') {
+    //         when {
+    //             branch 'main'
+    //         }
             
-          steps {
-                sh " ls -l "
-            }
-        }
+    //       steps {
+    //             sh " ls -l "
+    //         }
+    //     }
 
 
 
