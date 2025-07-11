@@ -1,8 +1,12 @@
 name: Example workflow for Python using Snyk
 on: push
+permissions:
+  contents: read
+  security-events: write
 jobs:
   security:
     runs-on: ubuntu-latest
+    
     # steps:
     #   - uses: actions/checkout@master
       # - name: Run Snyk to check for vulnerabilities
@@ -33,7 +37,8 @@ jobs:
         continue-on-error: true  # Prevents the job from failing on vulnerabilities
 
       - name: Upload SARIF to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
+
 
