@@ -1,5 +1,5 @@
 name: Example workflow for Python using Snyk
-on: push
+on: [push, pull_request]
 permissions:
   contents: read
   security-events: write
@@ -41,4 +41,23 @@ jobs:
         with:
           sarif_file: snyk.sarif
 
-
+      #  # ---- STACKHAWK ----
+      # - name: Install StackHawk CLI
+      #   run: |
+      #     curl -sSL https://download.stackhawk.com/cli/install.sh | sh
+      #     sudo mv ./bin/hawk /usr/local/bin/hawk
+  
+      # - name: Run StackHawk Scan
+      #   run: hawk scan --failOnHigh=true
+      #   env:
+      #     HAWK_API_KEY: ${{ secrets.HAWK_API_KEY }}
+      #     CI: true
+      
+      - name: Run Nginx
+        run: docker run --rm --detach --publish 8080:80 --name nginx_test nginx
+      - name: Run HawkScan
+        uses: stackhawk/hawkscan-action@v2
+        with:
+          apiKey: ${{ secrets.HAWK_API_KEY }}
+  
+  
