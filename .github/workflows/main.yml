@@ -54,7 +54,7 @@ jobs:
       #     CI: true
       
       - name: Run Nginx
-        run: docker run --rm --detach --publish 8080:80 --name nginx_test nginx
+        run: docker run --rm --detach --name nginx_test --network host nginx
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v2
         with:
