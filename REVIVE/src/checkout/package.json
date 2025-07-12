@@ -39,7 +39,7 @@
     "redis": "^4.5.1",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.3.1",
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
@@ -52,10 +52,10 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
-    "eslint": "^8.29.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "28.1.2",
+    "jest": "30.0.0",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.3.2",
