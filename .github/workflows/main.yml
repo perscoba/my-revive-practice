@@ -54,11 +54,8 @@ jobs:
       #     CI: true
       
       - name: Run Nginx
-        run: docker run --rm --detach --name nginx_test --network host nginx
+        run: docker run --rm --detach --publish 8080:80 --name nginx_test nginx
       - name: Run HawkScan
-        run: |
-          docker run --rm \
-            --network host \
-            -e API_KEY=${{ secrets.HAWK_API_KEY }} \
-            -v ${{ github.workspace }}:/hawk:rw \
-            stackhawk/hawkscan
+        uses: stackhawk/hawkscan-action@v2
+        with:
+          apiKey: ${{ secrets.HAWK_API_KEY }}
