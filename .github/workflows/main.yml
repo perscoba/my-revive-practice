@@ -1,4 +1,5 @@
-name: Example workflow for Python using Snyk
+name: Example workflow for app security SAST, SCA, IAST, DAST
+
 on: [push, pull_request]
 permissions:
   contents: read
