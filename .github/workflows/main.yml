@@ -1,13 +1,62 @@
-name: Example workflow for Python using Snyk
-on: push
+name: Example workflow for app security SAST, SCA, IAST, DAST
+
+on: [push, pull_request]
+permissions:
+  contents: read
+  security-events: write
 jobs:
   security:
     runs-on: ubuntu-latest
+    
+    # steps:
+    #   - uses: actions/checkout@master
+      # - name: Run Snyk to check for vulnerabilities
+      #   uses: snyk/actions/python@master
+      #   with:
+      #      command: code test --all-projects
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      
+
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (required for Snyk CLI)
+        uses: actions/setup-node@v3
         with:
-           args: test REVIVE/
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          node-version: '18'
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk Test
+        run: snyk test --all-projects --sarif-file-output=snyk.sarif
+        continue-on-error: true  # Prevents the job from failing on vulnerabilities
+
+      - name: Upload SARIF to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
+
+      #  # ---- STACKHAWK ----
+      # - name: Install StackHawk CLI
+      #   run: |
+      #     curl -sSL https://download.stackhawk.com/cli/install.sh | sh
+      #     sudo mv ./bin/hawk /usr/local/bin/hawk
+  
+      # - name: Run StackHawk Scan
+      #   run: hawk scan --failOnHigh=true
+      #   env:
+      #     HAWK_API_KEY: ${{ secrets.HAWK_API_KEY }}
+      #     CI: true
+      
+      - name: Run Nginx
+        run: docker run --rm --detach --publish 8080:80 --name nginx_test nginx
+      - name: Run HawkScan
+        uses: stackhawk/hawkscan-action@v2
+        with:
+          apiKey: ${{ secrets.HAWK_API_KEY }}
